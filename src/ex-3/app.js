@@ -12,28 +12,26 @@
 //rendenizar en yn contenedor html el texto "hola pepe"
 //creterio 2
 //conprobar si el input esta vacio
-//
 
 const inputUsername = document.getElementById('username')
-console.log(inputUsername.value);
 const btnValidate = document.getElementById('btn-validate')
 const mainBlock = document.querySelector('main')
 
-let isEmpty = true
-btnValidate.addEventListener('click') => {
+btnValidate.addEventListener('click', () => {
+    const username = inputUsername.value
+    render(username)     
+})
 
-    const username = input-username.value
-    console.log(username.length)
-    console.log(username);
-    mainBlock.innerHTML= /*html*/
-        `<span>Hola usernme</span>`
+function render(username) {
+    if (isEmpty(username) ){
+        mainBlock.innerHTML = /*html*/
+        `<span> debe introducir su nombre </span>`
+        return
+    }
+    mainBlock.innerHTML = /*html*/
+        `<span>Hola ${username}</span>`
 }
-funcioncrender(){
-    mainBlock.innerHTML = /*html*/`
-        <span>Hola ${username}/span>`
+function isEmpty(username){
+    const stringLength = username.length
+    return(stringLength === 0) ? true : false
 }
-function ckeckInput(){
-    const stringLength = inputUsername.value.length
-
-}
-1.18
