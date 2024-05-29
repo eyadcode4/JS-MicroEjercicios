@@ -12,8 +12,33 @@
 //rendenizar en yn contenedor html el texto "hola pepe"
 //creterio 2
 //conprobar si el input esta vacio
+const inputUsername = document.getElementById("usernameid")
+const btnValidate = document.getElementById('btn-Validar')
+const mainBlock = document.querySelector('main')
 
-const inputUsername = document.getElementById('username')
+btnValidate.addEventListener('click', () => {
+    const username4 = inputUsername.value
+    render(username4)
+    
+})
+
+function render (username1) {
+    if (isEmpty(username1)) {
+        mainBlock.innerHTML = /*html*/ `
+            <span> Debe introducir su nombre </span>`
+        return
+    }
+
+    mainBlock.innerHTML = /*html*/ `
+        <span> Hola ${username1} </span>`
+       
+}
+function isEmpty (username2) {
+    const uservalueLength = username2.length
+    return (uservalueLength === 0) ? true : false
+}
+
+/*const inputUsername = document.getElementById('username')
 const btnValidate = document.getElementById('btn-validate')
 const mainBlock = document.querySelector('main')
 
@@ -25,13 +50,14 @@ btnValidate.addEventListener('click', () => {
 function render(username) {
     if (isEmpty(username) ){
         mainBlock.innerHTML = /*html*/
-        `<span> debe introducir su nombre </span>`
+       /* `<span> debe introducir su nombre </span>`
         return
     }
     mainBlock.innerHTML = /*html*/
-        `<span>Hola ${username}</span>`
+     /*   `<span>Hola ${username}</span>`
 }
 function isEmpty(username){
     const stringLength = username.length
     return(stringLength === 0) ? true : false
 }
+*/
