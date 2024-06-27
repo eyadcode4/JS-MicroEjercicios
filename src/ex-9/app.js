@@ -1,10 +1,9 @@
- //Given that have to return the a quanties of a phrase
+ // Escribe un programa que pida una frase y escriba cuantas vocales hay en la frase.
  const phrase= document.getElementById('phrase');
  const button= document.getElementById('button');
  const answer= document.getElementById('answer');
 
- //Then i have to make a function wich count my vocals
-
+ 
  const countingVocals=()=>{
 
     let savingPhrase= phrase.value;

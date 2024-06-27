@@ -2,8 +2,9 @@
 //cuano se renderiza
 //entonce ver el texto "la suma de 3 +5 es 8"
 // aprobamos si estamos conectados con console.log('word');
+//Escribe un programa que escriba en la pantalla “La suma de 3 + 5 es <resultado>”.
 
-console.log('conect') // esta bien(ya esta redmenizado)
+console.log('conect')
 
 const numb1 = 3
 const numb2 = 5
@@ -16,9 +17,9 @@ function sum(num1, num2){
 }
 
 function render(num1,num2,total){
-    const divApp = document.getElementById('app')
+    const final = document.getElementById('app')
     const txt = `La suma de ${num1} +${num2} es ${total}`
-    divApp.innerHTML = txt
+    final.innerHTML = txt
 }
 
 render(numb1, numb2, sum(numb1,numb2));
