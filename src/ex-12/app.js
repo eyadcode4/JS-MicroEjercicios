@@ -2,34 +2,42 @@
 // por cuál de los cuatro es divisible
 // (hay que decir todos por los que es divisible)
 
-const mainBlock = document.querySelector("main");
-const number1 = document.getElementById("num-1").value;
-const btnCheck = document.getElementById("btn-check");
-let divisores = [];
+let numberInput = document.getElementById('number');
+let buttonNumber = document.getElementById('button');
+let imprimirConsola = document.getElementById('app');
 
-function render() {
-  if (divisores.length === 0) {
-    mainBlock.innerHTML = `${number1} no es divisible por 2, 3, 5 o 7`;
-  }
-  mainBlock.innerHTML = `${number1} es divisible por ${divisores}`;
-}
-
-function itsDivisible(num) {
-  if (num % 2 === 0) {
-    divisores.push(2);
-  }
-  if (num % 3 === 0) {
-    divisores.push(3);
-  }
-  if (num % 5 === 0) {
-    divisores.push(5);
-  }
-  if (num % 7 === 0) {
-    divisores.push(7);
-  }
-  return divisores;
-}
-
-btnCheck.addEventListener("click", () => {
-  render(itsDivisible(number1));
+buttonNumber.addEventListener('click', () => {
+    verificarDivisibilidad();
 });
+
+function verificarDivisibilidad() {
+    let number = parseInt(numberInput.value);
+    let divisores = ""; 
+
+    if (isNaN(number)) {
+        alert("Por favor, ingresa un número válido.");
+        return;
+    }
+
+    
+    if (number % 2 === 0) {
+        divisores += "2, ";
+    }
+    if (number % 3 === 0) {
+        divisores += "3, ";
+    }
+    if (number % 5 === 0) {
+        divisores += "5, ";
+    }
+    if (number % 7 === 0) {
+        divisores += "7, ";
+    }
+
+   
+    if (divisores.length > 0) {
+        divisores = divisores.slice(0, -2);
+        imprimirConsola.innerHTML = "El número " + number + " es divisible por " + divisores + ".";
+    } else {
+        imprimirConsola.innerHTML = "El número " + number + " no es divisible por 2, 3, 5, ni 7.";
+    }
+}

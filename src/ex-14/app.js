@@ -1,24 +1,18 @@
 // Escribir un programa que escriba en pantalla
 // los divisores comunes de dos números dados
 
-const mainBlock = document.querySelector("main");
-const number1 = document.getElementById("num-1").value;
-const number2 = document.getElementById("num-2").value;
-const btnCheck = document.getElementById("btn-check");
-let divisores = [];
-
-function render() {
-  mainBlock.innerHTML = `Los divisores comunes de ${number1} y ${number2} son ${divisores}`;
-}
-
-function itsDivisible(num1, num2) {
-  for (let i = 1; i <= Math.min(num1, num2); i++) {
-    if (num1 % i === 0 && num2 % i === 0) {
-      divisores.push(i);
+function encontrarDivisoresComunes() {
+    let num1 = document.getElementById('number1').value;
+    let num2 = document.getElementById('number2').value;
+    num1 = parseInt(num1, 10);
+    num2 = parseInt(num2, 10);
+    let divisoresComunes = [];
+  
+    for (let i = 1; i <= Math.min(num1, num2); i++) {
+      if (num1 % i == 0 && num2 % i == 0) {
+        divisoresComunes.push(i);
+      }
     }
+  
+    document.getElementById('resultado').innerHTML = 'Divisores comunes: ' + divisoresComunes.join(', ');
   }
-}
-
-btnCheck.addEventListener("click", () => {
-  render(itsDivisible(number1, number2));
-});

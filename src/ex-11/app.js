@@ -2,21 +2,37 @@
 // y nos diga si es divisible por 2, 3, 5 o 7
 // (sólo hay que comprobar si lo es por uno de los cuatro)
 
-const mainBlock = document.querySelector("main");
-const number1 = document.getElementById("num-1").value;
-const btnCheck = document.getElementById("btn-check");
 
-function render(msg) {
-  mainBlock.innerHTML = msg;
-}
+let numberInput = document.getElementById('number');
+let buttonNumber = document.getElementById('button');
+let imprimirConsola = document.getElementById('app');
 
-function itsDivisible(num) {
-  if (num % 2 === 0 || num % 3 === 0 || num % 5 === 0 || num % 7 === 0) {
-    return `${num} es divisible por 2, 3, 5 o 7`;
-  }
-  return `${num} NO es divisible por 2, 3, 5 o 7`;
-}
 
-btnCheck.addEventListener("click", () => {
-  render(itsDivisible(number1));
+buttonNumber.addEventListener('click', () => {
+    verificarDivisibilidad()
+
 });
+
+function verificarDivisibilidad() {
+    let number = parseInt(numberInput.value);
+
+if (isNaN(number)) {
+    alert("Por favor, ingresa un número válido.");
+    return;
+}
+
+
+if (number % 2 === 0) {
+    imprimirConsola.innerHTML = "El número " + number + " es divisible por 2.";
+} else if (number % 3 === 0) {
+    imprimirConsola.innerHTML = "El número " + number + " es divisible por 3.";
+} else if (number % 5 === 0) {
+    imprimirConsola.innerHTML = "El número " + number + " es divisible por 5.";
+} else if (number % 7 === 0) {
+    imprimirConsola.innerHTML = "El número " + number + " es divisible por 7.";
+} else {
+    imprimirConsola.innerHTML = "El número " + number + " no es divisible por 2, 3, 5, ni 7.";
+
+}
+
+}

@@ -1,34 +1,75 @@
 // Escribe un programa que pida una frase
 // y escriba cuántas veces aparecen cada una de las vocales
 
-const mainBlock = document.querySelector("main");
-const sentence = document.getElementById("sentence-1").value;
-const btnCheck = document.getElementById("btn-check");
 
-function render(msg) {
-  for (const [key, value] of Object.entries(msg)) {
-    console.log(key, value);
+let texto = document.getElementById('text');
+let buttonText = document.getElementById('button');
+let imprimirConsolaA = document.getElementById('appA');
+let imprimirConsolaE = document.getElementById('appE');
+let imprimirConsolaI = document.getElementById('appI');
+let imprimirConsolaO = document.getElementById('appO');
+let imprimirConsolaU = document.getElementById('appU');
 
-    let e = document.createElement("p");
-    e.innerHTML = `<b>${key}</b>: ${value}`;
-    mainBlock.appendChild(e);
-  }
-}
 
-function countVowels(sentence) {
-  const vowels = ["a", "e", "i", "o", "u"];
-  let checkedVowels = { a: 0, e: 0, i: 0, o: 0, u: 0 };
+let vocales = "aeiou";
+let contA = 0;
+let contE = 0;
+let contI = 0;
+let contO = 0;
+let contU = 0;
 
-  for (let i = 0; i < sentence.length; i++) {
-    let letter = sentence[i].toLowerCase();
 
-    if (vowels.includes(sentence[i].toLowerCase())) {
-      checkedVowels[letter] += 1;
+buttonText.addEventListener ('click', () => {
+    comprobarVocal()
+        
+    })
+
+    function comprobarVocal(){
+        const length = texto.value.length;
+        if(length === 0){
+           alert("El campo esta Vacío")
+         } else {
+           cuentaVocal()
+         }
+   }
+
+
+   function cuentaVocal() {
+    let buscaVocal = texto.value;
+
+    for (let i = 0; i < buscaVocal.length; i++) {
+        let minuscula = buscaVocal[i].toLowerCase()
+        if(minuscula === "a"){
+            contA++ 
+            imprimirConsolaA.innerHTML = "Esta frase contiene " + contA + " a."
+        
+        }else if(minuscula === "e"){
+            contE++ 
+            imprimirConsolaE.innerHTML = "Esta frase contiene " + contE + " e."
+
+        }else if(minuscula === "i"){
+                contI++ 
+                imprimirConsolaI.innerHTML = "Esta frase contiene " + contI + " i."
+        }else if(minuscula === "o"){
+            contO++ 
+            imprimirConsolaO.innerHTML = "Esta frase contiene " + contO + " O."
+        }else if(minuscula === "u"){
+            contU++ 
+            imprimirConsolaU.innerHTML = "Esta frase contiene " + contU + " u."
+        }
+        else if(contA === 0 && contE === 0 && contI === 0 && contO === 0 && contU === 0){
+            imprimirConsolaA.innerHTML = "Esta frase no contiene vocales."
+        }
+        
+            
+        }
+
+        contA = 0
+        contE = 0
+        contI = 0
+        contO = 0
+        contU = 0
+    
+
+
     }
-  }
-  return checkedVowels;
-}
-
-btnCheck.addEventListener("click", () => {
-  render(countVowels(sentence));
-});

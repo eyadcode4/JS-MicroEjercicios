@@ -1,27 +1,29 @@
-// Escribe un programa que pida una frase 
-// y escriba cuantas vocales hay en la frase.
+ //Given that have to return the a quanties of a phrase
+ const phrase= document.getElementById('phrase');
+ const button= document.getElementById('button');
+ const answer= document.getElementById('answer');
 
+ //Then i have to make a function wich count my vocals
 
-const mainBlock = document.querySelector("main");
-const sentence = document.getElementById("sentence-1").value;
-const btnCheck = document.getElementById("btn-check");
-let counter = 0;
+ const countingVocals=()=>{
 
-function render(msg) {
-  mainBlock.innerHTML = msg;
-}
+    let savingPhrase= phrase.value;
+    let extractPhraseVocals= savingPhrase.match(/[aeiou]/gi);
+    let showVocalsLength;
 
-function countVowels(sentence) {
-  const vowels = ["a", "e", "i", "o", "u"];
-  
-  for (let i = 0; i < sentence.length; i++) {
-    if (vowels.includes(sentence[i].toLowerCase())) {
-      counter++;
+    if (extractPhraseVocals) {
+        showVocalsLength= extractPhraseVocals.length;
+    } else {
+        showVocalsLength= '0';
     }
-  }
-  return `Hay ${counter} vowels.`;
-}
 
-btnCheck.addEventListener("click", () => {
-  render(countVowels(sentence));
-});
+    return showVocalsLength
+ }
+
+ //When i make click on my button!
+
+ button.addEventListener("click", ()=>{
+    let printVocalsLength= countingVocals();
+    
+    return answer.innerHTML=`${printVocalsLength}`
+ })
